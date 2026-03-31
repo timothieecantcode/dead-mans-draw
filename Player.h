@@ -20,7 +20,7 @@ public:
     /// Return true if player busts otherwise return false
     bool playCard(Card* card);
 
-    /// Check if play area has duplicate card types
+    /// Check if play area has any duplicate suit (is busted)
     bool isBust() const;
 
     /// Move all cards from playArea to bank
