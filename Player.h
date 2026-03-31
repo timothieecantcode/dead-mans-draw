@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <algorithm>
 #include "Card.h"
 
 class Player {
@@ -38,6 +40,15 @@ public:
 
     /// Return bank
     const std::vector<Card*>& bank() const;
+
+    /// Remove a card from the player's bank
+    void removeFromBank(Card* targetCard);
+
+    /// Print the descending order of cards of each suit in the player's bank
+    void printDescendingCardsPerSuit() const;
+
+    /// Return the highest value card of each suit in the player's bank
+    std::vector<Card*> getTopCardsPerSuit() const;
 };
 
 #endif

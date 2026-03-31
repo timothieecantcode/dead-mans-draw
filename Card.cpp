@@ -13,3 +13,18 @@ const CardType& Card::type() const {
 int Card::value() const {
     return _value;
 }
+
+const std::vector<CardType>& Card::getAllCardTypes() {
+    static std::vector<CardType> types = {
+        CardType::Cannon,
+        CardType::Chest,
+        CardType::Key,
+        CardType::Sword,
+        CardType::Hook,
+        CardType::Oracle,
+        CardType::Map,
+        CardType::Mermaid,
+        CardType::Kraken };
+
+    return types;
+}

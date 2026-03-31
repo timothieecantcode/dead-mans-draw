@@ -2,6 +2,7 @@
 #define CARD_H
 
 #include <string>
+#include <vector>
 
 class Game;
 class Player;
@@ -33,11 +34,15 @@ public:
     /// Return a string representation of the card
     virtual std::string str() const = 0;
 
-    /// Return the cardtype
+    /// Return the cardtype of a card
     const CardType& type() const;
+
+    /// Return all card types
+    static const std::vector<CardType>& getAllCardTypes();
 
     /// Return card value
     int value() const;
+
 };
 
 #endif
