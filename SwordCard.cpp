@@ -14,7 +14,7 @@ void SwordCard::play(Game& game, Player& player) {
     }
     std::cout << "Steal the top card of any suit from the other player's Bank into your playArea:" << std::endl;
     for (Card* card : selectableCards) {
-        std::cout << "(" << i << ") " << card->str() << std::endl;
+        std::cout << "(" << i << ") " << card->getStr() << std::endl;
         ++i;
     }
     std::cout << "Which card do you pick? ";
@@ -27,4 +27,8 @@ void SwordCard::play(Game& game, Player& player) {
     Card* selectedCard = selectableCards[input - 1];
     opponent->removeFromBank(selectedCard);
     player.playCard(selectedCard);
+}
+
+std::string SwordCard::getStr() const {
+    return "Sword(" + std::to_string(getValue()) + ")";
 }

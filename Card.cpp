@@ -6,11 +6,11 @@ void Card::willAddToBank(Game& game, Player& player) {
     //default: do nothing, can be overridden by derived classes
 }
 
-const CardType& Card::type() const {
+const CardType& Card::getType() const {
     return _type;
 }
 
-int Card::value() const {
+int Card::getValue() const {
     return _value;
 }
 

@@ -52,6 +52,9 @@ public:
 
     /// Return the highest value card of each suit in the player's bank
     std::vector<Card*> getTopCardsPerSuit() const;
+
+    /// Add a card to bank (use for ability like chest + key)
+    void addToBank(Card* card);
 };
 
 #endif

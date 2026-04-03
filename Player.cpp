@@ -11,7 +11,7 @@ bool Player::isBust() const {
     //double loop to compare every pair of cards to check for duplicate
     for (size_t i = 0; i < _playArea.size(); i++) {
         for (size_t j = i + 1; j < _playArea.size(); j++) {
-            if (_playArea[i]->type() == _playArea[j]->type()) {
+            if (_playArea[i]->getType() == _playArea[j]->getType()) {
                 return true;
             }
         }
@@ -53,7 +53,7 @@ void Player::removeFromBank(Card* targetCard) {
 
 void Player::printPlayArea() const {
     for (Card* c : _playArea) {
-        std::cout << c->str() << std::endl;
+        std::cout << c->getStr() << std::endl;
     }
 }
 
@@ -61,16 +61,16 @@ void Player::printDescendingCardsPerSuit() const {
     for (CardType type : Card::getAllCardTypes()) {
         std::vector<Card*> tempBank;
         for (Card* card : _bank) {
-            if (card->type() == type) {
+            if (card->getType() == type) {
                 tempBank.push_back(card);
             }
         }
         if (!tempBank.empty()) {
             //sort the suit in descending order based on card value
             std::sort(tempBank.begin(), tempBank.end(), [](const Card* a, const Card* b) {
-                return a->value() > b->value();});
+                return a->getValue() > b->getValue();});
             for (Card* card : tempBank) {
-                std::cout << card->str() << " ";
+                std::cout << card->getStr() << " ";
             }
             std::cout << std::endl;
         }
@@ -82,16 +82,20 @@ std::vector<Card*> Player::getTopCardsPerSuit() const {
     for (CardType type : Card::getAllCardTypes()) {
         std::vector<Card*> tempBank;
         for (Card* card : _bank) {
-            if (card->type() == type) {
+            if (card->getType() == type) {
                 tempBank.push_back(card);
             }
         }
         if (!tempBank.empty()) {
             //sort the suit in descending order based on card value
             std::sort(tempBank.begin(), tempBank.end(), [](const Card* a, const Card* b) {
-                return a->value() > b->value();});
+                return a->getValue() > b->getValue();});
             selectableCards.push_back(tempBank[0]);
         }
     }
     return selectableCards;
+}
+
+void Player::addToBank(Card* card) {
+    _bank.push_back(card);
 }

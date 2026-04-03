@@ -32,16 +32,16 @@ public:
     virtual void willAddToBank(Game& game, Player& player);
 
     /// Return a string representation of the card
-    virtual std::string str() const = 0;
+    virtual std::string getStr() const = 0;
 
     /// Return the cardtype of a card
-    const CardType& type() const;
+    const CardType& getType() const;
 
     /// Return all card types
     static const std::vector<CardType>& getAllCardTypes();
 
     /// Return card value
-    int value() const;
+    int getValue() const;
 
 };
 

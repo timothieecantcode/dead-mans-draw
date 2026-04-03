@@ -14,7 +14,7 @@ void CannonCard::play(Game& game, Player& player) {
     }
     std::cout << "Shoot the top card of any suit from the other player's Bank into the Discard Pile:" << std::endl;
     for (Card* card : selectableCards) {
-        std::cout << "(" << i << ") " << card->str() << std::endl;
+        std::cout << "(" << i << ") " << card->getStr() << std::endl;
         ++i;
     }
     std::cout << "Which card do you pick? ";
@@ -27,4 +27,8 @@ void CannonCard::play(Game& game, Player& player) {
     Card* selectedCard = selectableCards[input - 1];
     opponent->removeFromBank(selectedCard);
     game.addToDiscardPile(selectedCard);
+}
+
+std::string CannonCard::str() const {
+    return "Cannon(" + std::to_string(getValue()) + ")";
 }

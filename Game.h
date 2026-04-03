@@ -38,6 +38,9 @@ public:
 
     /// Add a card to the discard pile
     void addToDiscardPile(Card* card);
+
+    /// Draw a card from the discard pile
+    Card* drawFromDiscardPile();
 };
 
 #endif

@@ -111,7 +111,7 @@ void Game::playTurn() {
         std::cout << " |  Score: " << player->calculateScore() << std::endl;
 
         Card* card = drawCard();
-        std::cout << player->getName() << " draws a " << card->str() << std::endl;
+        std::cout << player->getName() << " draws a " << card->getStr() << std::endl;
         bool bust = player->playCard(card);
 
         if (bust == true) {
@@ -121,6 +121,10 @@ void Game::playTurn() {
             }
             player->clearPlayArea();
             switchPlayer();
+            ++turn;
+            if (turn % 2 == 1) {
+                ++round;
+            }
             return;
         }
         card->play(*this, *player);
@@ -145,6 +149,15 @@ void Game::playTurn() {
     }
 }
 
+Card* Game::drawCard() {
+    if (_deck.empty()) {
+        return nullptr;
+    }
+    Card* card = _deck.back();
+    _deck.pop_back();
+    return card;
+}
+
 void Game::shuffleDeck(std::vector<Card*>& cards) {
     std::vector<Card*> shuffleDeck(cards.begin(), cards.end());
     std::shuffle(shuffleDeck.begin(), shuffleDeck.end(), std::mt19937{ std::random_device{}() });
@@ -165,4 +178,14 @@ Player* Game::getOpponent(Player& player) {
 
 void Game::addToDiscardPile(Card* card) {
     _discardPile.push_back(card);
+}
+
+Card* Game::drawFromDiscardPile() {
+    if (_discardPile.empty()) {
+        return nullptr;
+    }
+
+    Card* card = _discardPile.back();
+    _discardPile.pop_back();
+    return card;
 }

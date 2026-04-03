@@ -13,7 +13,7 @@ public:
     /// Discard the highest value of any suit from the other player's Bank to the Discard Pile
     void play(Game& game, Player& player) override;
 
-    std::string str() const override;
+    std::string getStr() const override;
 };
 
 #endif
