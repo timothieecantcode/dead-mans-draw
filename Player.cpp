@@ -30,15 +30,15 @@ void Player::clearPlayArea() {
     _playArea.clear();
 }
 
-const std::string& Player::name() const {
+const std::string& Player::getName() const {
     return _name;
 }
 
-const std::vector<Card*>& Player::playArea() const {
+const std::vector<Card*>& Player::getPlayArea() const {
     return _playArea;
 }
 
-const std::vector<Card*>& Player::bank() const {
+const std::vector<Card*>& Player::getBank() const {
     return _bank;
 }
 
@@ -48,6 +48,12 @@ void Player::removeFromBank(Card* targetCard) {
             _bank.erase(i);
             break;
         }
+    }
+}
+
+void Player::printPlayArea() const {
+    for (Card* c : _playArea) {
+        std::cout << c->str() << std::endl;
     }
 }
 

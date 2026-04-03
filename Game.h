@@ -6,7 +6,7 @@
 
 class Game {
 protected:
-    std::vector<Card*> _deck;   
+    std::vector<Card*> _deck;
     std::vector<Card*> _discardPile;
     std::vector<Player*> _players;
     int currentPlayerIndex;

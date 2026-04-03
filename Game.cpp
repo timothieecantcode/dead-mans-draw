@@ -68,7 +68,7 @@ void Game::startGame() {
     while (!_deck.empty()) {
         playTurn();
     }
-    
+
     Player* winner;
     if (_players[0]->calculateScore() > _players[1]->calculateScore()) {
         winner = _players[0];
@@ -78,13 +78,13 @@ void Game::startGame() {
     }
 
     std::cout << "--- Game Over ---" << std::endl;
-    std::cout << _players[0]->name() << "'s Bank:" << std::endl;
+    std::cout << _players[0]->getName() << "'s Bank:" << std::endl;
     _players[0]->printDescendingCardsPerSuit();
     std::cout << _players[0]->calculateScore() << std::endl;
-    std::cout << _players[1]->name() << "'s Bank:" << std::endl;
+    std::cout << _players[1]->getName() << "'s Bank:" << std::endl;
     _players[1]->printDescendingCardsPerSuit();
     std::cout << _players[1]->calculateScore() << std::endl;
-    std::cout << winner->name() << " wins!" << std::endl;
+    std::cout << winner->getName() << " wins!" << std::endl;
 
     for (Player* p : _players) {
         delete p;
@@ -101,14 +101,59 @@ void Game::startGame() {
     _discardPile.clear();
 }
 
+void Game::playTurn() {
+    std::cout << "--- Round " << round << ", Turn " << turn << " ---" << std::endl;
+    Player* player = _players[currentPlayerIndex];
+
+    while (true) {
+        std::cout << player->getName() << "'s turn," << std::endl;
+        player->printDescendingCardsPerSuit();
+        std::cout << " |  Score: " << player->calculateScore() << std::endl;
+
+        Card* card = drawCard();
+        std::cout << player->getName() << " draws a " << card->str() << std::endl;
+        bool bust = player->playCard(card);
+
+        if (bust == true) {
+            std::cout << "BUST! " << player->getName() << " loses all cards in play area." << std::endl;
+            for (Card* c : player->getPlayArea()) {
+                addToDiscardPile(c);
+            }
+            player->clearPlayArea();
+            switchPlayer();
+            return;
+        }
+        card->play(*this, *player);
+        std::cout << player->getName() << "'s Play Area:" << std::endl;
+        player->printPlayArea();
+
+        char choice;
+        std::cout << "Draw again? (y/n) : ";
+        std::cin >> choice;
+        while (choice != 'n' && choice != 'y') {
+            std::cin >> choice;
+        }
+        if (choice == 'n') {
+            player->bankCards();
+            switchPlayer();
+            ++turn;
+            if (turn % 2 == 1) {
+                ++round;
+            }
+            return;
+        }
+    }
+}
+
 void Game::shuffleDeck(std::vector<Card*>& cards) {
     std::vector<Card*> shuffleDeck(cards.begin(), cards.end());
     std::shuffle(shuffleDeck.begin(), shuffleDeck.end(), std::mt19937{ std::random_device{}() });
     std::copy(shuffleDeck.begin(), shuffleDeck.end(), cards.begin());
 }
 
-
-
+void Game::switchPlayer() {
+    currentPlayerIndex = 1 - currentPlayerIndex;
+}
 
 
 Player* Game::getOpponent(Player& player) {

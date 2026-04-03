@@ -33,16 +33,19 @@ public:
     void clearPlayArea();
 
     /// Return player's name
-    const std::string& name() const;
+    const std::string& getName() const;
 
     /// Return playArea
-    const std::vector<Card*>& playArea() const;
+    const std::vector<Card*>& getPlayArea() const;
 
     /// Return bank
-    const std::vector<Card*>& bank() const;
+    const std::vector<Card*>& getBank() const;
 
     /// Remove a card from the player's bank
     void removeFromBank(Card* targetCard);
+
+    /// Print player's Play Area
+    void printPlayArea() const;
 
     /// Print the descending order of cards of each suit in the player's bank
     void printDescendingCardsPerSuit() const;
