@@ -12,6 +12,8 @@ public:
 
     /// Steal the highest value of any suit from the other player's Bank and add it to your playArea
     void play(Game& game, Player& player) override;
+
+    std::string str() const override;
 };
 
 #endif

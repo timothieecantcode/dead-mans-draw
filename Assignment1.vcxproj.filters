@@ -30,6 +30,9 @@
     <ClCompile Include="CannonCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SwordCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CannonCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

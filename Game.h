@@ -6,17 +6,17 @@
 
 class Game {
 protected:
-    std::vector<Card*> _deck;
+    std::vector<Card*> _deck;   
     std::vector<Card*> _discardPile;
     std::vector<Player*> _players;
     int currentPlayerIndex;
     int round;
+    int turn;
 public:
     Game() = default;
     ~Game();
     /// Initialise the game with a deck of cards and 2 players
     void startGame();
-
 
     /// Runs one player's turn
     void playTurn();
@@ -31,7 +31,7 @@ public:
     void endGame();
 
     /// Shuffle the deck
-    void shuffleDeck();
+    void shuffleDeck(std::vector<Card*>& cards);
 
     /// Return opponent player
     Player* getOpponent(Player&);
@@ -39,6 +39,5 @@ public:
     /// Add a card to the discard pile
     void addToDiscardPile(Card* card);
 };
-
 
 #endif
