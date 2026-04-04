@@ -4,7 +4,7 @@
 KeyCard::KeyCard(int value) : Card(value, CardType::Key) {}
 
 void KeyCard::play(Game& game, Player& player) {
-    std::cout << "No immediate effect. If banked with a chest, draw as many bonus cards from the Discard pile as you moved into your Bank.";
+    std::cout << "        No immediate effect. If banked with a chest, draw as many bonus cards from the Discard pile as you moved into your Bank." << std::endl;
 }
 
 std::string KeyCard::getStr() const {

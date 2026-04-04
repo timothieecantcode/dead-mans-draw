@@ -65,9 +65,6 @@
     <ClInclude Include="Card.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\game_title.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CannonCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KrakenCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_title.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

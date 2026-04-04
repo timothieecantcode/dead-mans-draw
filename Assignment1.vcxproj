@@ -142,11 +142,11 @@
     <ClCompile Include="SwordCard.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Downloads\game_title.h" />
     <ClInclude Include="CannonCard.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="ChestCard.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="game_title.h" />
     <ClInclude Include="HookCard.h" />
     <ClInclude Include="KeyCard.h" />
     <ClInclude Include="KrakenCard.h" />

@@ -111,7 +111,7 @@ void Game::playTurn() {
     std::cout << player->getName() << "'s turn." << std::endl;
     std::cout << player->getName() << "'s Bank:" << std::endl;
     player->printDescendingCardsPerSuit();
-    std::cout << " |  Score: " << player->calculateScore() << std::endl;
+    std::cout << "| Score: " << player->calculateScore() << std::endl;
 
     while (true) {
         Card* card = drawCard();
@@ -131,7 +131,20 @@ void Game::playTurn() {
             }
             return;
         }
+
         card->play(*this, *player);
+        if (player->isBust()) {
+            std::cout << "BUST! " << player->getName() << " loses all cards in play area." << std::endl;
+            for (Card* c : player->getPlayArea()) {
+                addToDiscardPile(c);
+            }
+            player->clearPlayArea();
+            switchPlayer();
+            ++turn;
+            if (turn % 2 == 1) ++round;
+            return;
+        }
+
         std::cout << player->getName() << "'s Play Area:" << std::endl;
         player->printPlayArea();
         std::cout << std::endl;
@@ -139,11 +152,8 @@ void Game::playTurn() {
         char choice;
         std::cout << "Draw again? (y/n): ";
         std::cin >> choice;
-        while (choice != 'n' && choice != 'y') {
-            std::cin >> choice;
-        }
-        if (choice == 'n') {
-            player->bankCards();
+        if (choice != 'y') {
+            player->bankCards(*this);
             switchPlayer();
             ++turn;
             if (turn % 2 == 1) {

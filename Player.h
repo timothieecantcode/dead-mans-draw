@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Card.h"
+#include "Game.h"
 
 class Player {
 protected:
@@ -22,7 +23,7 @@ public:
     bool isBust() const;
 
     /// Move all cards from playArea to bank
-    void bankCards();
+    void bankCards(Game& game);
 
     /// Cauculate score based on highest card per suit
     int calculateScore() const;

@@ -11,25 +11,29 @@ void SwordCard::play(Game& game, Player& player) {
     Player* opponent = game.getOpponent(player);
     selectableCards = opponent->getTopCardsPerSuit();
     if (selectableCards.empty()) {
-        std::cout << "No cards in other player's Bank. Play continues" << std::endl;
+        std::cout << "        No cards in other player's Bank. Play continues." << std::endl;
         return;
     }
-    std::cout << "Steal the top card of any suit from the other player's Bank into your playArea:" << std::endl;
+    std::cout << "        Steal the top card of any suit from the other player's Bank into your playArea:" << std::endl;
     for (Card* card : selectableCards) {
-        std::cout << "(" << i << ") " << card->getStr() << std::endl;
+        std::cout << "        (" << i << ") " << card->getStr() << std::endl;
         ++i;
     }
-    std::cout << "Which card do you pick? ";
+    std::cout << "        Which card do you pick? ";
     std::cin >> choice;
     while (choice < 1 || choice > static_cast<int>(selectableCards.size())) {
-        std::cout << "Which card do you pick? ";
+        std::cout << "        Which card do you pick? ";
         std::cin >> choice;
     }
     std::cout << std::endl;
     Card* selectedCard = selectableCards[choice - 1];
     std::cout << player.getName() << " draws a " << selectedCard->getStr() << std::endl;
     opponent->removeFromBank(selectedCard);
-    player.playCard(selectedCard);
+    bool bust = player.playCard(selectedCard);
+    if (bust) {
+        return;
+    }
+    selectedCard->play(game, player);
 }
 
 std::string SwordCard::getStr() const {

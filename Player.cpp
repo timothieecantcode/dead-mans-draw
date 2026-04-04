@@ -23,8 +23,29 @@ bool Player::isBust() const {
     return false;
 }
 
-void Player::bankCards() {
+void Player::bankCards(Game& game) {
+    bool hasChest = false;
+    bool hasKey = false;
     for (Card* card : _playArea) {
+        if (card->getType() == CardType::Chest) hasChest = true;
+        if (card->getType() == CardType::Key) hasKey = true;
+        if (hasChest && hasKey) {
+            std::vector<Card*> drawnCards;
+            for (size_t i = 0; i < _playArea.size(); ++i) {
+                Card* c = game.drawFromDiscardPile();
+
+                if (!c) {
+                    break;
+                }
+                _bank.push_back(c);
+                drawnCards.push_back(c);
+            }
+            std::cout << "        Chest and Key activated. Added ";
+            for (Card* c : drawnCards) {
+                std::cout << c->getStr() << ", ";
+            }
+            std::cout << " to your bank" << std::endl;
+        }
         _bank.push_back(card);
     }
     clearPlayArea();
@@ -65,7 +86,7 @@ void Player::removeFromBank(Card* targetCard) {
 
 void Player::printPlayArea() const {
     for (Card* c : _playArea) {
-        std::cout << c->getStr() << std::endl;
+        std::cout << "        " << c->getStr() << std::endl;
     }
 }
 

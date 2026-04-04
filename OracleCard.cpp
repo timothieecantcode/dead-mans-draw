@@ -10,7 +10,7 @@ void OracleCard::play(Game& game, Player& player) {
     if (card == nullptr) {
         return;
     }
-    std::cout << "The Oracle sees a " << card->getStr() << std::endl;
+    std::cout << "        The Oracle sees a " << card->getStr() << std::endl;
 }
 
 std::string OracleCard::getStr() const {
