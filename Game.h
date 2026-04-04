@@ -14,7 +14,7 @@ protected:
     int round;
     int turn;
 public:
-    Game() = default;
+    Game();
     ~Game();
     /// Initialise the game with a deck of cards and 2 players
     void startGame();

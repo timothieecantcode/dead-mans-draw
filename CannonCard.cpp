@@ -11,7 +11,7 @@ void CannonCard::play(Game& game, Player& player) {
     Player* opponent = game.getOpponent(player);
     selectableCards = opponent->getTopCardsPerSuit();
     if (selectableCards.empty()) {
-        std::cout << "No cards in other player's Bank. Play continues" << std::endl;
+        std::cout << "No cards in other player's Bank. Play continues." << std::endl;
         return;
     }
     std::cout << "Shoot the top card of any suit from the other player's Bank into the Discard Pile:" << std::endl;

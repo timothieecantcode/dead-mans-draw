@@ -15,10 +15,12 @@
 #include <vector>
 #include <iostream>
 
-Game::Game() : currentPlayerIndex(0), round(1) {}
+Game::Game() : currentPlayerIndex(0), round(1), turn(1) {}
+
+Game::~Game() {}
 
 void Game::startGame() {
-    srand(time(nullptr));
+    srand(static_cast<int>(time(nullptr)));
     _deck.clear();
     _discardPile.clear();
     _players.clear();
@@ -106,12 +108,12 @@ void Game::startGame() {
 void Game::playTurn() {
     std::cout << "--- Round " << round << ", Turn " << turn << " ---" << std::endl;
     Player* player = _players[currentPlayerIndex];
+    std::cout << player->getName() << "'s turn." << std::endl;
+    std::cout << player->getName() << "'s Bank:" << std::endl;
+    player->printDescendingCardsPerSuit();
+    std::cout << " |  Score: " << player->calculateScore() << std::endl;
 
     while (true) {
-        std::cout << player->getName() << "'s turn," << std::endl;
-        player->printDescendingCardsPerSuit();
-        std::cout << " |  Score: " << player->calculateScore() << std::endl;
-
         Card* card = drawCard();
         std::cout << player->getName() << " draws a " << card->getStr() << std::endl;
         bool bust = player->playCard(card);
@@ -132,9 +134,10 @@ void Game::playTurn() {
         card->play(*this, *player);
         std::cout << player->getName() << "'s Play Area:" << std::endl;
         player->printPlayArea();
+        std::cout << std::endl;
 
         char choice;
-        std::cout << "Draw again? (y/n) : ";
+        std::cout << "Draw again? (y/n): ";
         std::cin >> choice;
         while (choice != 'n' && choice != 'y') {
             std::cin >> choice;

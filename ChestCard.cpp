@@ -1,4 +1,5 @@
 #include "ChestCard.h"
+#include <iostream>
 
 ChestCard::ChestCard(int value) : Card(value, CardType::Chest) {}
 
@@ -19,10 +20,9 @@ void ChestCard::willAddToBank(Game& game, Player& player) {
     if (!withKey) {
         return;
     }
-
-    int count = player.getPlayArea().size();
     std::cout << " Chest and Key activated. Added ";
-    for (int i = 0; i < count; ++i) {
+
+    for (size_t i = 0; i < player.getPlayArea().size(); ++i) {
         Card* c = game.drawFromDiscardPile();
         if (c == nullptr) {
             break;
@@ -32,5 +32,5 @@ void ChestCard::willAddToBank(Game& game, Player& player) {
 }
 
 std::string ChestCard::getStr() const {
-    return " Chest(" + std::to_string(getValue()) + ")";
+    return "Chest(" + std::to_string(getValue()) + ")";
 }

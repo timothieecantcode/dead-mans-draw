@@ -29,3 +29,7 @@ void HookCard::play(Game& game, Player& player) {
     player.removeFromBank(selectedCard);
     player.playCard(selectedCard);
 }
+
+std::string HookCard::getStr() const {
+    return "Hook(" + std::to_string(getValue()) + ")";
+}

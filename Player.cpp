@@ -30,6 +30,14 @@ void Player::bankCards() {
     clearPlayArea();
 }
 
+int Player::calculateScore() const {
+    int score = 0;
+    for (Card* c : _bank) {
+        score += c->getValue();
+    }
+    return score;
+}
+
 void Player::clearPlayArea() {
     _playArea.clear();
 }

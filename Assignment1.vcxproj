@@ -129,11 +129,15 @@
   <ItemGroup>
     <ClCompile Include="CannonCard.cpp" />
     <ClCompile Include="ChestCard.cpp" />
+    <ClCompile Include="HookCard.cpp" />
     <ClCompile Include="KeyCard.cpp" />
+    <ClCompile Include="KrakenCard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="MapCard.cpp" />
     <ClCompile Include="Mermaid.cpp" />
+    <ClCompile Include="OracleCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SwordCard.cpp" />
   </ItemGroup>
@@ -143,8 +147,12 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="ChestCard.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HookCard.h" />
     <ClInclude Include="KeyCard.h" />
+    <ClInclude Include="KrakenCard.h" />
+    <ClInclude Include="MapCard.h" />
     <ClInclude Include="MermaidCard.h" />
+    <ClInclude Include="OracleCard.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SwordCard.h" />
   </ItemGroup>

@@ -1,5 +1,5 @@
-#ifndef KRAKEN_H
-#define KRAKEN_H
+#ifndef KRAKENCARD_H
+#define KRAKENCARD_H
 
 #include "Game.h"
 #include "Player.h"
