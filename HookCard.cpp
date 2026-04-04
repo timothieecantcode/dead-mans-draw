@@ -1,20 +1,18 @@
-#include "SwordCard.h"
+#include "HookCard.h"
 #include <vector>
 #include <iostream>
 
-SwordCard::SwordCard(int value) : Card(value, CardType::Sword) {}
+HookCard::HookCard(int value) : Card(value, CardType::Hook) {}
 
-void SwordCard::play(Game& game, Player& player) {
-    int choice;
+void HookCard::play(Game& game, Player& player) {
+    std::vector<Card*> selectableCards = player.getTopCardsPerSuit();
     int i = 1;
-    std::vector<Card*> selectableCards;
-    Player* opponent = game.getOpponent(player);
-    selectableCards = opponent->getTopCardsPerSuit();
+    int choice;
     if (selectableCards.empty()) {
-        std::cout << "No cards in other player's Bank. Play continues" << std::endl;
+        std::cout << "No cards in your Bank. Play continues." << std::endl;
         return;
     }
-    std::cout << "Steal the top card of any suit from the other player's Bank into your playArea:" << std::endl;
+    std::cout << "Select a highest-value card from any of the suits in your Bank:" << std::endl;
     for (Card* card : selectableCards) {
         std::cout << "(" << i << ") " << card->getStr() << std::endl;
         ++i;
@@ -28,10 +26,6 @@ void SwordCard::play(Game& game, Player& player) {
     std::cout << std::endl;
     Card* selectedCard = selectableCards[choice - 1];
     std::cout << player.getName() << " draws a " << selectedCard->getStr() << std::endl;
-    opponent->removeFromBank(selectedCard);
+    player.removeFromBank(selectedCard);
     player.playCard(selectedCard);
-}
-
-std::string SwordCard::getStr() const {
-    return "Sword(" + std::to_string(getValue()) + ")";
 }

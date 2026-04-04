@@ -12,6 +12,8 @@
 #include <algorithm>
 #include <random>
 #include <ctime>
+#include <vector>
+#include <iostream>
 
 Game::Game() : currentPlayerIndex(0), round(1) {}
 
@@ -114,7 +116,7 @@ void Game::playTurn() {
         std::cout << player->getName() << " draws a " << card->getStr() << std::endl;
         bool bust = player->playCard(card);
 
-        if (bust == true) {
+        if (bust) {
             std::cout << "BUST! " << player->getName() << " loses all cards in play area." << std::endl;
             for (Card* c : player->getPlayArea()) {
                 addToDiscardPile(c);
@@ -188,4 +190,11 @@ Card* Game::drawFromDiscardPile() {
     Card* card = _discardPile.back();
     _discardPile.pop_back();
     return card;
+}
+
+Card* Game::getTopCardInDeck() {
+    if (_deck.empty()) {
+        return nullptr;
+    }
+    return _deck.back();
 }

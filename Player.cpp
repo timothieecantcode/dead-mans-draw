@@ -1,4 +1,8 @@
 #include "Player.h"
+#include <vector>
+#include <iostream>
+#include <string>
+#include <algorithm>
 
 Player::Player(const std::string& name) : _name(name) {}
 

@@ -1,4 +1,6 @@
 #include "CannonCard.h"
+#include <iostream>
+#include <string>
 
 CannonCard::CannonCard(int value) : Card(value, CardType::Cannon) {}
 
@@ -25,10 +27,11 @@ void CannonCard::play(Game& game, Player& player) {
     }
     std::cout << std::endl;
     Card* selectedCard = selectableCards[input - 1];
+    std::cout << player.getName() << " draws a " << selectedCard->getStr() << std::endl;
     opponent->removeFromBank(selectedCard);
     game.addToDiscardPile(selectedCard);
 }
 
-std::string CannonCard::str() const {
+std::string CannonCard::getStr() const {
     return "Cannon(" + std::to_string(getValue()) + ")";
 }

@@ -3,6 +3,7 @@
 
 #include "Card.h"
 #include "Player.h"
+#include <vector>
 
 class Game {
 protected:
@@ -41,6 +42,9 @@ public:
 
     /// Draw a card from the discard pile
     Card* drawFromDiscardPile();
+
+    /// Return a top card of the deck
+    Card* getTopCardInDeck();
 };
 
 #endif

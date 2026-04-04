@@ -3,8 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
-#include <algorithm>
 #include "Card.h"
 
 class Player {

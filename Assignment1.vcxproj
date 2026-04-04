@@ -128,9 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CannonCard.cpp" />
+    <ClCompile Include="ChestCard.cpp" />
+    <ClCompile Include="KeyCard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Mermaid.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SwordCard.cpp" />
   </ItemGroup>
@@ -138,7 +141,10 @@
     <ClInclude Include="..\..\..\..\Downloads\game_title.h" />
     <ClInclude Include="CannonCard.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="ChestCard.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="KeyCard.h" />
+    <ClInclude Include="MermaidCard.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SwordCard.h" />
   </ItemGroup>
