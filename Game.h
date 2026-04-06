@@ -28,9 +28,6 @@ public:
     /// Change te current player to the next player
     void switchPlayer();
 
-    /// End the game
-    void endGame();
-
     /// Shuffle the deck
     void shuffleDeck(std::vector<Card*>& cards);
 
