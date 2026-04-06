@@ -12,18 +12,18 @@ void MapCard::play(Game& game, Player& player) {
         selectableCards.push_back(card);
     }
     if (selectableCards.empty()) {
-        std::cout << "        No cards in the discard. Play continues." << std::endl;
+        std::cout << "\tNo cards in the discard. Play continues." << std::endl;
         return;
     }
-    std::cout << "        Draw 3 cads from the discard and pick one to add to the play area:" << std::endl;
+    std::cout << "\tDraw 3 cards from the discard and pick one to add to the play area:" << std::endl;
     for (size_t i = 0; i < selectableCards.size(); ++i) {
         Card* c = selectableCards[i];
-        std::cout << "        (" << i + 1 << ") " << c->getStr() << std::endl;
+        std::cout << "\t(" << i + 1 << ") " << c->getStr() << std::endl;
     }
-    std::cout << "        Which card do you pick? ";
+    std::cout << "\tWhich card do you pick? ";
     std::cin >> choice;
     while (choice < 1 || choice > static_cast<int>(selectableCards.size())) {
-        std::cout << "        Which card do you pick? ";
+        std::cout << "\tWhich card do you pick? ";
         std::cin >> choice;
     }
     std::cout << std::endl;

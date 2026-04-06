@@ -5,7 +5,7 @@
 MermaidCard::MermaidCard(int value) : Card(value, CardType::Mermaid) {}
 
 void MermaidCard::play(Game& game, Player& player) {
-    std::cout << "        No effect but Mermaids are worth more" << std::endl;
+    std::cout << "\tNo effect but Mermaids are worth more." << std::endl;
 }
 
 std::string MermaidCard::getStr() const {

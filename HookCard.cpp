@@ -9,18 +9,18 @@ void HookCard::play(Game& game, Player& player) {
     int i = 1;
     int choice;
     if (selectableCards.empty()) {
-        std::cout << "        No cards in your Bank. Play continues." << std::endl;
+        std::cout << "\tNo cards in your Bank. Play continues." << std::endl;
         return;
     }
-    std::cout << "        Select a highest-value card from any of the suits in your Bank:" << std::endl;
+    std::cout << "\tSelect a highest-value card from any of the suits in your Bank:" << std::endl;
     for (Card* card : selectableCards) {
-        std::cout << "        (" << i << ") " << card->getStr() << std::endl;
+        std::cout << "\t(" << i << ") " << card->getStr() << std::endl;
         ++i;
     }
-    std::cout << "        Which card do you pick? ";
+    std::cout << "\tWhich card do you pick? ";
     std::cin >> choice;
     while (choice < 1 || choice > static_cast<int>(selectableCards.size())) {
-        std::cout << "        Which card do you pick? ";
+        std::cout << "\tWhich card do you pick? ";
         std::cin >> choice;
     }
     std::cout << std::endl;

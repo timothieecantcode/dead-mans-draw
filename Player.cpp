@@ -29,6 +29,7 @@ void Player::bankCards(Game& game) {
     for (Card* card : _playArea) {
         if (card->getType() == CardType::Chest) hasChest = true;
         if (card->getType() == CardType::Key) hasKey = true;
+    }
         if (hasChest && hasKey) {
             std::vector<Card*> drawnCards;
             for (size_t i = 0; i < _playArea.size(); ++i) {
@@ -40,14 +41,15 @@ void Player::bankCards(Game& game) {
                 _bank.push_back(c);
                 drawnCards.push_back(c);
             }
-            std::cout << "        Chest and Key activated. Added ";
+            std::cout << "\tChest and Key activated. Added ";
             for (Card* c : drawnCards) {
                 std::cout << c->getStr() << ", ";
             }
             std::cout << " to your bank" << std::endl;
         }
-        _bank.push_back(card);
-    }
+        for (Card* card : _playArea) {
+            _bank.push_back(card);
+        }
     clearPlayArea();
 }
 

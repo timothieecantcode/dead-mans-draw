@@ -4,7 +4,7 @@
 KrakenCard::KrakenCard(int value) : Card(value, CardType::Kraken) {}
 
 void KrakenCard::play(Game& game, Player& player) {
-    std::cout << "        Draw 3 cards from the deck and play each:" << std::endl;
+    std::cout << "\tDraw 3 cards from the deck and play each:" << std::endl;
     for (int i = 0; i < 3; ++i) {
         Card* c = game.drawCard();
         if (c == nullptr) {
