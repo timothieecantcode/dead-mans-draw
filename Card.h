@@ -28,9 +28,6 @@ public:
     /// Play the card's ability
     virtual void play(Game& game, Player& player) = 0;
 
-    /// Called before the card is added to the bank
-    virtual void willAddToBank(Game& game, Player& player);
-
     /// Return a string representation of the card
     virtual std::string getStr() const = 0;
 

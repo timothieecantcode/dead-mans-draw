@@ -2,10 +2,6 @@
 
 Card::Card(int value, CardType type) : _value(value), _type(type) {}
 
-void Card::willAddToBank(Game& game, Player& player) {
-    //default: do nothing, can be overridden by derived classes
-}
-
 const CardType& Card::getType() const {
     return _type;
 }
